@@ -1,0 +1,45 @@
+import numpy as np
+import time
+
+def euclidean_distance_naive(a,b):
+    #Write down your code here
+
+def euclidean_distance_dot(a,b):
+    #Write down your code here
+    
+#Simple Test with row vectors of size 1 x 2
+a = np.array([[3,5]])
+b = np.array([[6,9]])
+print(euclidean_distance_naive(a,b))
+print(euclidean_distance_dot(a,b))
+print()
+
+#Test with random row vectors of size 1 x 10 Million
+#Random numbers with seed
+np.random.seed(42)
+m = 10**7 #10 Million Features
+a = np.random.random((1,m))
+b = np.random.random((1,m))
+
+#stop time of computation
+start = time.process_time()
+#compute distance
+print(euclidean_distance_naive(a,b))
+delta = (time.process_time()-start)
+print("Computation Time Naive: %f s" % delta)
+
+start = time.process_time()
+print(euclidean_distance_dot(a,b))
+delta = (time.process_time()-start)
+print("Computation Time Fast: %f s" % delta)
+
+
+
+
+##Exercise 2.2
+import sklearn.datasets as datasets
+import pylab as pl
+#Simulate Toy Dataset
+X, y = datasets.make_circles(n_samples=150, shuffle=True,
+                             noise=0.2, random_state=42,
+                             factor=0.1)
